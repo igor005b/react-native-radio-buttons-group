@@ -1,5 +1,6 @@
 export type RadioButtonProps = {
   borderColor?: string;
+  selectedColor?: string;
   color?: string;
   containerStyle?: object;
   disabled?: boolean;
@@ -17,4 +18,7 @@ export type RadioGroupProps = {
   layout?: 'row' | 'column';
   onPress?: (radioButtons: RadioButtonProps[]) => void;
   radioButtons: RadioButtonProps[];
+  color?: string;
+  selectedColor?: string;
+  labelStyle?: object;
 };
