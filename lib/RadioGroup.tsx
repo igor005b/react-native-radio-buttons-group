@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { RadioButton, RadioButtonProps, RadioGroupProps } from './index';
 
-export default function RadioGroup({ layout = 'column', onPress, radioButtons, color, selectedColor, labelStyle }: RadioGroupProps) {
+export default function RadioGroup({ layout = 'column', onPress, radioButtons, color, selectedColor, labelStyle, reset }: RadioGroupProps) {
 
   const [radioButtonsArray, setRadioButtonsArray] = useState<RadioButtonProps[]>(radioButtons);
 
@@ -17,6 +17,20 @@ export default function RadioGroup({ layout = 'column', onPress, radioButtons, c
       onPress(radioButtonsArray);
     }
   }
+
+  function resetRadioGroup() {
+    setRadioButtonsArray(data => data.map(item => {
+      if(item.hasOwnProperty('selected')) {
+          return { ...item, selected: false };
+      } else {
+          return item;
+      }
+    }));
+  }
+
+  useEffect(() => {
+    resetRadioGroup();
+  }, [reset]);
 
   return (
     <View style={styles.container}>

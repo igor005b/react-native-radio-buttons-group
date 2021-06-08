@@ -21,4 +21,5 @@ export type RadioGroupProps = {
   color?: string;
   selectedColor?: string;
   labelStyle?: object;
+  reset?: boolean;
 };
